@@ -3,6 +3,9 @@
 %{
 /* need this for the call to atof() below */
 #include <math.h>
+#include "tiger.tab.h"
+
+extern YYSTYPE yylval;
 
 int   contadorComentario = 0;
 char* string = "";
@@ -24,96 +27,86 @@ INTEGER  [0-9]+
 
 <INITIAL>
 
-","  { adjust(); printf("COMMA \n"     ); }
-":"  { adjust(); printf("COLON \n"     ); }
-";"  { adjust(); printf("SEMICOLON \n" ); }
-"("  { adjust(); printf("LPAREN \n"    ); }
-")"  { adjust(); printf("RPAREN \n"    ); }
-"["  { adjust(); printf("LBRACK \n"    ); }
-"]"  { adjust(); printf("RBRACK \n"    ); }
-"{"  { adjust(); printf("LBRACE \n"    ); }
-"}"  { adjust(); printf("RBRACE \n"    ); }
-"."  { adjust(); printf("DOT \n"       ); }
-"+"  { adjust(); printf("PLUS \n"      ); }
-"-"  { adjust(); printf("MINUS \n"     ); }
-"*"  { adjust(); printf("TIMES \n"     ); }
-"/"  { adjust(); printf("DIVIDE \n"    ); }
-"="  { adjust(); printf("EQUAL \n"     ); }
-"<>" { adjust(); printf("NEQUAL \n"    ); }
-"<"  { adjust(); printf("LT \n"        ); }
-"<=" { adjust(); printf("LE \n"        ); }
-">"  { adjust(); printf("GT \n"        ); }
-">=" { adjust(); printf("GE \n"        ); }
-"&"  { adjust(); printf("AND \n"       ); }
-"|"  { adjust(); printf("OR \n"        ); }
-":=" { adjust(); printf("ASSIGN \n"    ); }
+","  { adjust(); return COMMA      ; }
+":"  { adjust(); return COLON      ; }
+";"  { adjust(); return SEMICOLON  ; }
+"("  { adjust(); return LPAREN     ; }
+")"  { adjust(); return RPAREN     ; }
+"["  { adjust(); return LBRACK     ; }
+"]"  { adjust(); return RBRACK     ; }
+"{"  { adjust(); return LBRACE     ; }
+"}"  { adjust(); return RBRACE     ; }
+"."  { adjust(); return DOT        ; }
+"+"  { adjust(); return PLUS       ; }
+"-"  { adjust(); return MINUS      ; }
+"*"  { adjust(); return TIMES      ; }
+"/"  { adjust(); return DIVIDE     ; }
+"="  { adjust(); return EQUAL      ; }
+"<>" { adjust(); return NEQUAL     ; }
+"<"  { adjust(); return LT         ; }
+"<=" { adjust(); return LE         ; }
+">"  { adjust(); return GT         ; }
+">=" { adjust(); return GE         ; }
+"&"  { adjust(); return AND        ; }
+"|"  { adjust(); return OR         ; }
+":=" { adjust(); return ASSIGN     ; }
 
-array     { adjust(); printf("array \n"    ); }
-if        { adjust(); printf("if \n"       ); }
-then      { adjust(); printf("then \n"     ); }
-else      { adjust(); printf("else \n"     ); }
-while     { adjust(); printf("while \n"    ); }
-for       { adjust(); printf("for \n"      ); }
-to        { adjust(); printf("to \n"       ); }
-do        { adjust(); printf("do \n"       ); }
-let       { adjust(); printf("let \n"      ); }
-in        { adjust(); printf("in \n"       ); }
-end       { adjust(); printf("end \n"      ); }
-of        { adjust(); printf("of \n"       ); }
-break     { adjust(); printf("break \n"    ); }
-nil       { adjust(); printf("nil \n"      ); }
-function  { adjust(); printf("function \n" ); }
-var       { adjust(); printf("var \n"      ); }
-type      { adjust(); printf("type \n"     ); }
-import    { adjust(); printf("import \n"   ); }
-primitive { adjust(); printf("private \n"  ); }
+array     { adjust(); return ARRAY     ; }
+if        { adjust(); return IF        ; }
+then      { adjust(); return THEN      ; }
+else      { adjust(); return ELSE      ; }
+while     { adjust(); return WHILE     ; }
+for       { adjust(); return FOR       ; }
+to        { adjust(); return TO        ; }
+do        { adjust(); return DO        ; }
+let       { adjust(); return LET       ; }
+in        { adjust(); return IN        ; }
+end       { adjust(); return END       ; }
+of        { adjust(); return OF        ; }
+break     { adjust(); return BREAK     ; }
+nil       { adjust(); return NIL       ; }
+function  { adjust(); return FUNCTION  ; }
+var       { adjust(); return VAR       ; }
+type      { adjust(); return TYPE      ; }
+import    { adjust(); return IMPORT    ; }
+primitive { adjust(); return PRIVATE   ; }
 
-{VARIAVEL}  { adjust(); printf( "identifier " ); }
+{VARIAVEL}  { yylval.sval = strdup(yytext); adjust(); return ID    ; }
      
-{DIGIT}+    { adjust(); printf( "integer "    ); }
+{DIGIT}+    { yylval.ival = atoi(yytext); adjust(); return INT     ; }
 
-"/*" BEGIN(IN_COMMENT); contadorComentario++; 
+"/*" { BEGIN(IN_COMMENT); contadorComentario++; }
 
 <IN_COMMENT>{
    "/*" { contadorComentario++; }
    .    {}
-   "*/" { if (--contadorComentario == 0) { printf("comentario "); BEGIN(INITIAL); } }    
+   "*/" { if (--contadorComentario == 0) { BEGIN(INITIAL); } }    
 }
 
 "\"" BEGIN(IN_STRING);
 
 <IN_STRING>{
-   "\"" { printf( "String") ; BEGIN(INITIAL); }	
+   "\"" { yylval.sval = strdup(yytext); return STRING; BEGIN(INITIAL); }	
    .    {}
 
 }
    
-[ \t\n]+ { adjust(); }        /* eat up whitespace */
+[ \t\n]+ { adjust(); } 
      
-.           printf( "Unrecognized character " );
+.  ;
 
 %%
      
 int yywrap() {}
 
-int main( int argc, char **argv )
-{
-   ++argv, --argc;  /* skip over program name */
-   if ( argc > 0 )
-      yyin = fopen( argv[0], "r" );
-   else
-      yyin = stdin;
-   yylex();
-}
-
 void adjust(){
-   
+   //Arrumar
    if (strcmp( yytext, "\n" ) == 0 ) {
       coluna = 1;
       linha++;
    }else{
       coluna += yyleng;
    }
-   printf("%d %d ", linha, coluna);
+   printf( "%d %d ", linha, coluna);
    
 }

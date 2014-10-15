@@ -538,17 +538,20 @@ char *yytext;
 #line 4 "tiger.flex"
 /* need this for the call to atof() below */
 #include <math.h>
+#include "tiger.tab.h"
+
+extern YYSTYPE yylval;
 
 int   contadorComentario = 0;
 char* string = "";
-int   linha = 1;
+int   linha  = 1;
 int   coluna = 1;
 
 void adjust();
 
 
 
-#line 552 "lex.yy.c"
+#line 555 "lex.yy.c"
 
 #define INITIAL 0
 #define IN_STRING 1
@@ -737,10 +740,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 23 "tiger.flex"
+#line 26 "tiger.flex"
 
 
-#line 744 "lex.yy.c"
+#line 747 "lex.yy.c"
 
 	if ( !(yy_init) )
 		{
@@ -825,280 +828,280 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 27 "tiger.flex"
-{ adjust(); printf("COMMA \n"     ); }
+#line 30 "tiger.flex"
+{ adjust(); return COMMA      ; }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 28 "tiger.flex"
-{ adjust(); printf("COLON \n"     ); }
+#line 31 "tiger.flex"
+{ adjust(); return COLON      ; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 29 "tiger.flex"
-{ adjust(); printf("SEMICOLON \n" ); }
+#line 32 "tiger.flex"
+{ adjust(); return SEMICOLON  ; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 30 "tiger.flex"
-{ adjust(); printf("LPAREN \n"    ); }
+#line 33 "tiger.flex"
+{ adjust(); return LPAREN     ; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 31 "tiger.flex"
-{ adjust(); printf("RPAREN \n"    ); }
+#line 34 "tiger.flex"
+{ adjust(); return RPAREN     ; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 32 "tiger.flex"
-{ adjust(); printf("LBRACK \n"    ); }
+#line 35 "tiger.flex"
+{ adjust(); return LBRACK     ; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 33 "tiger.flex"
-{ adjust(); printf("RBRACK \n"    ); }
+#line 36 "tiger.flex"
+{ adjust(); return RBRACK     ; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 34 "tiger.flex"
-{ adjust(); printf("LBRACE \n"    ); }
+#line 37 "tiger.flex"
+{ adjust(); return LBRACE     ; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 35 "tiger.flex"
-{ adjust(); printf("RBRACE \n"    ); }
+#line 38 "tiger.flex"
+{ adjust(); return RBRACE     ; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 36 "tiger.flex"
-{ adjust(); printf("DOT \n"       ); }
+#line 39 "tiger.flex"
+{ adjust(); return DOT        ; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 37 "tiger.flex"
-{ adjust(); printf("PLUS \n"      ); }
+#line 40 "tiger.flex"
+{ adjust(); return PLUS       ; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 38 "tiger.flex"
-{ adjust(); printf("MINUS \n"     ); }
+#line 41 "tiger.flex"
+{ adjust(); return MINUS      ; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 39 "tiger.flex"
-{ adjust(); printf("TIMES \n"     ); }
+#line 42 "tiger.flex"
+{ adjust(); return TIMES      ; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 40 "tiger.flex"
-{ adjust(); printf("DIVIDE \n"    ); }
+#line 43 "tiger.flex"
+{ adjust(); return DIVIDE     ; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 41 "tiger.flex"
-{ adjust(); printf("EQUAL \n"     ); }
+#line 44 "tiger.flex"
+{ adjust(); return EQUAL      ; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 42 "tiger.flex"
-{ adjust(); printf("NEQUAL \n"    ); }
+#line 45 "tiger.flex"
+{ adjust(); return NEQUAL     ; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 43 "tiger.flex"
-{ adjust(); printf("LT \n"        ); }
+#line 46 "tiger.flex"
+{ adjust(); return LT         ; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 44 "tiger.flex"
-{ adjust(); printf("LE \n"        ); }
+#line 47 "tiger.flex"
+{ adjust(); return LE         ; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 45 "tiger.flex"
-{ adjust(); printf("GT \n"        ); }
+#line 48 "tiger.flex"
+{ adjust(); return GT         ; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 46 "tiger.flex"
-{ adjust(); printf("GE \n"        ); }
+#line 49 "tiger.flex"
+{ adjust(); return GE         ; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 47 "tiger.flex"
-{ adjust(); printf("AND \n"       ); }
+#line 50 "tiger.flex"
+{ adjust(); return AND        ; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 48 "tiger.flex"
-{ adjust(); printf("OR \n"        ); }
+#line 51 "tiger.flex"
+{ adjust(); return OR         ; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 49 "tiger.flex"
-{ adjust(); printf("ASSIGN \n"    ); }
+#line 52 "tiger.flex"
+{ adjust(); return ASSIGN     ; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 51 "tiger.flex"
-{ adjust(); printf("array \n"    ); }
+#line 54 "tiger.flex"
+{ adjust(); return ARRAY     ; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 52 "tiger.flex"
-{ adjust(); printf("if \n"       ); }
+#line 55 "tiger.flex"
+{ adjust(); return IF        ; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 53 "tiger.flex"
-{ adjust(); printf("then \n"     ); }
+#line 56 "tiger.flex"
+{ adjust(); return THEN      ; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 54 "tiger.flex"
-{ adjust(); printf("else \n"     ); }
+#line 57 "tiger.flex"
+{ adjust(); return ELSE      ; }
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 55 "tiger.flex"
-{ adjust(); printf("while \n"    ); }
+#line 58 "tiger.flex"
+{ adjust(); return WHILE     ; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 56 "tiger.flex"
-{ adjust(); printf("for \n"      ); }
+#line 59 "tiger.flex"
+{ adjust(); return FOR       ; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 57 "tiger.flex"
-{ adjust(); printf("to \n"       ); }
+#line 60 "tiger.flex"
+{ adjust(); return TO        ; }
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 58 "tiger.flex"
-{ adjust(); printf("do \n"       ); }
+#line 61 "tiger.flex"
+{ adjust(); return DO        ; }
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 59 "tiger.flex"
-{ adjust(); printf("let \n"      ); }
+#line 62 "tiger.flex"
+{ adjust(); return LET       ; }
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 60 "tiger.flex"
-{ adjust(); printf("in \n"       ); }
+#line 63 "tiger.flex"
+{ adjust(); return IN        ; }
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 61 "tiger.flex"
-{ adjust(); printf("end \n"      ); }
+#line 64 "tiger.flex"
+{ adjust(); return END       ; }
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 62 "tiger.flex"
-{ adjust(); printf("of \n"       ); }
+#line 65 "tiger.flex"
+{ adjust(); return OF        ; }
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 63 "tiger.flex"
-{ adjust(); printf("break \n"    ); }
+#line 66 "tiger.flex"
+{ adjust(); return BREAK     ; }
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 64 "tiger.flex"
-{ adjust(); printf("nil \n"      ); }
+#line 67 "tiger.flex"
+{ adjust(); return NIL       ; }
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 65 "tiger.flex"
-{ adjust(); printf("function \n" ); }
+#line 68 "tiger.flex"
+{ adjust(); return FUNCTION  ; }
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 66 "tiger.flex"
-{ adjust(); printf("var \n"      ); }
+#line 69 "tiger.flex"
+{ adjust(); return VAR       ; }
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 67 "tiger.flex"
-{ adjust(); printf("type \n"     ); }
+#line 70 "tiger.flex"
+{ adjust(); return TYPE      ; }
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 68 "tiger.flex"
-{ adjust(); printf("import \n"   ); }
+#line 71 "tiger.flex"
+{ adjust(); return IMPORT    ; }
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 69 "tiger.flex"
-{ adjust(); printf("private \n"  ); }
+#line 72 "tiger.flex"
+{ adjust(); return PRIVATE   ; }
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 71 "tiger.flex"
-{ adjust(); printf( "identifier " ); }
+#line 74 "tiger.flex"
+{ yylval.sval = strdup(yytext); adjust(); return ID    ; }
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 73 "tiger.flex"
-{ adjust(); printf( "integer "    ); }
+#line 76 "tiger.flex"
+{ yylval.ival = atoi(yytext); adjust(); return INT     ; }
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 75 "tiger.flex"
-BEGIN(IN_COMMENT); contadorComentario++; 
+#line 78 "tiger.flex"
+{ BEGIN(IN_COMMENT); contadorComentario++; }
 	YY_BREAK
 
 case 46:
 YY_RULE_SETUP
-#line 78 "tiger.flex"
+#line 81 "tiger.flex"
 { contadorComentario++; }
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 79 "tiger.flex"
+#line 82 "tiger.flex"
 {}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 80 "tiger.flex"
-{ if (--contadorComentario == 0) { printf("comentario "); BEGIN(INITIAL); } }    
+#line 83 "tiger.flex"
+{ if (--contadorComentario == 0) { BEGIN(INITIAL); } }    
 	YY_BREAK
 
 case 49:
 YY_RULE_SETUP
-#line 83 "tiger.flex"
+#line 86 "tiger.flex"
 BEGIN(IN_STRING);
 	YY_BREAK
 
 case 50:
 YY_RULE_SETUP
-#line 86 "tiger.flex"
-{ printf( "String") ; BEGIN(INITIAL); }	
+#line 89 "tiger.flex"
+{ yylval.sval = strdup(yytext); return STRING; BEGIN(INITIAL); }	
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 87 "tiger.flex"
+#line 90 "tiger.flex"
 {}
 	YY_BREAK
 
 case 52:
 /* rule 52 can match eol */
 YY_RULE_SETUP
-#line 91 "tiger.flex"
-{ adjust(); }        /* eat up whitespace */
+#line 94 "tiger.flex"
+{ adjust(); } 
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 93 "tiger.flex"
-printf( "Unrecognized character " );
+#line 96 "tiger.flex"
+;
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 95 "tiger.flex"
+#line 98 "tiger.flex"
 ECHO;
 	YY_BREAK
-#line 1102 "lex.yy.c"
+#line 1105 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(IN_STRING):
 case YY_STATE_EOF(IN_COMMENT):
@@ -2098,31 +2101,25 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 95 "tiger.flex"
+#line 98 "tiger.flex"
 
 
      
 int yywrap() {}
 
-int main( int argc, char **argv )
-{
-   ++argv, --argc;  /* skip over program name */
-   if ( argc > 0 )
-      yyin = fopen( argv[0], "r" );
-   else
-      yyin = stdin;
+int main(){
    yylex();
 }
 
 void adjust(){
-   
+   //Arrumar
    if (strcmp( yytext, "\n" ) == 0 ) {
       coluna = 1;
       linha++;
    }else{
       coluna += yyleng;
    }
-   printf("%d %d ", linha, coluna);
+   printf( "%d %d ", linha, coluna);
    
 }
 

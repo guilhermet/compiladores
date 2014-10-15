@@ -1,0 +1,14 @@
+tiger.tab.c tiger.tab.h: tiger.y
+	bison -d snazzle.y
+
+lex.yy.c: tiger.flex tiger.tab.h
+	flex tiger.flex
+
+snazzle: lex.yy.c tiger.tab.c tiger.tab.h
+	gcc tiger.tab.c lex.yy.c -o teste
+
+% make tiger
+bison -d snazzle.y
+flex snazzle.l
+g++ snazzle.tab.c lex.yy.c -lfl -o snazzle
+%
