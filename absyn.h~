@@ -10,6 +10,8 @@
 //typedef struct S_symbol_ *S_symbol;
 //S_symbol S_Symbol(char*);
 
+#include "util.h"
+#include "symbol.h"
 
 typedef int A_pos;
 

@@ -21,7 +21,4 @@ A_exp parse(char* fname)
  else return NULL;
 }
 
-int main(){
-   parse("teste");
-   yyparse;
-}
+

@@ -174,7 +174,6 @@ A_dec A_FunctionDec(A_pos pos, S_symbol name, A_fieldList params, S_symbol resul
    p->result=result;
    p->body=body;
    return p;
-}
 /*
 A_dec A_FunctionDec(A_pos pos, A_fundecList function){
    A_dec p = checked_malloc(sizeof(*p));

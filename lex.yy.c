@@ -1088,17 +1088,17 @@ YY_RULE_SETUP
 case 52:
 /* rule 52 can match eol */
 YY_RULE_SETUP
-#line 94 "tiger.flex"
+#line 93 "tiger.flex"
 { adjust(); } 
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 96 "tiger.flex"
+#line 95 "tiger.flex"
 ;
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 98 "tiger.flex"
+#line 97 "tiger.flex"
 ECHO;
 	YY_BREAK
 #line 1105 "lex.yy.c"
@@ -2101,15 +2101,11 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 98 "tiger.flex"
+#line 97 "tiger.flex"
 
 
      
 int yywrap() {}
-
-int main(){
-   yylex();
-}
 
 void adjust(){
    //Arrumar
@@ -2119,7 +2115,7 @@ void adjust(){
    }else{
       coluna += yyleng;
    }
-   printf( "%d %d ", linha, coluna);
+//   printf( "%d %d ", linha, coluna);
    
 }
 

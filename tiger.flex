@@ -88,7 +88,6 @@ primitive { adjust(); return PRIVATE   ; }
 <IN_STRING>{
    "\"" { yylval.sval = strdup(yytext); return STRING; BEGIN(INITIAL); }	
    .    {}
-
 }
    
 [ \t\n]+ { adjust(); } 
@@ -99,10 +98,6 @@ primitive { adjust(); return PRIVATE   ; }
      
 int yywrap() {}
 
-int main(){
-   yylex();
-}
-
 void adjust(){
    //Arrumar
    if (strcmp( yytext, "\n" ) == 0 ) {
@@ -111,6 +106,6 @@ void adjust(){
    }else{
       coluna += yyleng;
    }
-   printf( "%d %d ", linha, coluna);
+//   printf( "%d %d ", linha, coluna);
    
 }

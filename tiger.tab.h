@@ -92,15 +92,22 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 14 "tiger.y"
+#line 17 "tiger.y"
 
 	int ival;
 	char* sval;
+
+	struct A_exp_ *A_exp;
+	struct A_var_ *A_var;
+	struct A_oper_ *A_oper;
+	struct A_expList_ *A_expList;
+//	struct A_dec_ *A_dec;
+//	struct A_decList_ *A_decList;
 	
 
 
 /* Line 2068 of yacc.c  */
-#line 104 "tiger.tab.h"
+#line 111 "tiger.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
@@ -109,18 +116,4 @@ typedef union YYSTYPE
 
 extern YYSTYPE yylval;
 
-#if ! defined YYLTYPE && ! defined YYLTYPE_IS_DECLARED
-typedef struct YYLTYPE
-{
-  int first_line;
-  int first_column;
-  int last_line;
-  int last_column;
-} YYLTYPE;
-# define yyltype YYLTYPE /* obsolescent; will be withdrawn */
-# define YYLTYPE_IS_DECLARED 1
-# define YYLTYPE_IS_TRIVIAL 1
-#endif
-
-extern YYLTYPE yylloc;
 
