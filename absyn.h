@@ -7,9 +7,8 @@
 
 /* Type Definitions */
 
-//typedef struct S_symbol_ *S_symbol;
-//S_symbol S_Symbol(char*);
-
+typedef struct S_symbol_ *S_symbol;
+S_symbol S_Symbol(char*);
 
 typedef int A_pos;
 

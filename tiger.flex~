@@ -86,7 +86,7 @@ primitive { adjust(); return PRIVATE   ; }
 "\"" BEGIN(IN_STRING);
 
 <IN_STRING>{
-   "\"" { yylval.sval = strdup(yytext); return STRING; BEGIN(INITIAL); }	
+   "\"" { yylval.sval = strdup(yytext); printf("String"); return STRING; BEGIN(INITIAL); }	
    .    {}
 }
    

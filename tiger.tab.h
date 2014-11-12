@@ -92,22 +92,32 @@ typedef union YYSTYPE
 {
 
 /* Line 2068 of yacc.c  */
-#line 17 "tiger.y"
+#line 15 "tiger.y"
 
 	int ival;
 	char* sval;
 
-	struct A_exp_ *A_exp;
 	struct A_var_ *A_var;
-	struct A_oper_ *A_oper;
+	struct A_exp_ *A_exp;
+	struct A_dec_ *A_dec;
+	struct A_ty_ *A_ty;
+
+	struct A_decList_ *A_decList;
 	struct A_expList_ *A_expList;
-//	struct A_dec_ *A_dec;
-//	struct A_decList_ *A_decList;
+	struct A_field_ *A_field;
+	struct A_fieldList_ *A_fieldList;
+	struct A_fundec_ *A_fundec;
+	struct A_fundecList_ *A_fundecList;
+	struct A_namety_ *A_namety;
+	struct A_nametyList_ *A_nametyList;
+	struct A_efield_ *A_efield;
+	struct A_efieldList_ *A_efieldList;
+
 	
 
 
 /* Line 2068 of yacc.c  */
-#line 111 "tiger.tab.h"
+#line 121 "tiger.tab.h"
 } YYSTYPE;
 # define YYSTYPE_IS_TRIVIAL 1
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
